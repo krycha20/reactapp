@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header {
+  text-align: center;
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid #000;
+  margin: 10px;
+}
+
+.card.completed {
+  opacity: .5;
+}
+
+.card.completed h2 {
+  text-decoration: line-through;
+}
