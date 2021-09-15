@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoItem from './TodoItem'
+import TodoItem from './todoItem'
 
 class Todo extends React.Component {
   state = {
@@ -17,17 +17,19 @@ class Todo extends React.Component {
     ]
   }
 
-  // markCompleted(id) {
-  //   const index = this.state.elements.findIndex(x => x.id == id)
-  //   const newElements = this.state.elements
-  //   newElements[index].isCompleted = true
+  toggleCheck(id) {
+    const index = this.state.elements.findIndex(x => x.id === id)
+    const newElements = this.state.elements
+    newElements[index].isCompleted = !newElements[index].isCompleted
 
-  //   this.setState({ elements: newElemenets })
-  // }
+    console.log(window.location.href);
+
+    this.setState({ elements: newElements })
+  }
 
   render() {
     const elements = this.state.elements.map(e => {
-      return <TodoItem element={e} />
+      return <TodoItem element={e} markClicked={this.toggleCheck.bind(this)} />
     })
     return (
       <div>

@@ -1,8 +1,15 @@
 import React from 'react';
-import Todo from './components/todo';
+import './app.scss'
+import Header from './components/header/header'
+import Todo from './components/Todo/todo';
 
 function App() {
-  return (<Todo/>);
+  return (
+    <div className="app">
+      <Header />
+      <Todo />
+    </div>
+  );
 }
 
 export default App;
