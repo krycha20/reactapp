@@ -1,4 +1,5 @@
 import React from 'react';
+import './todo.scss'
 import TodoItem from './todoItem'
 
 class Todo extends React.Component {
@@ -13,6 +14,21 @@ class Todo extends React.Component {
         id: '2',
         title: 'frachty',
         isCompleted: false
+      },
+      {
+        id: '3',
+        title: 'kurczaczki',
+        isCompleted: false
+      },
+      {
+        id: '4',
+        title: 'jajuszka',
+        isCompleted: false
+      },
+      {
+        id: '5',
+        title: 'kiełbaski',
+        isCompleted: false
       }
     ]
   }
@@ -22,8 +38,6 @@ class Todo extends React.Component {
     const newElements = this.state.elements
     newElements[index].isCompleted = !newElements[index].isCompleted
 
-    console.log(window.location.href);
-
     this.setState({ elements: newElements })
   }
 
@@ -32,9 +46,11 @@ class Todo extends React.Component {
       return <TodoItem element={e} markClicked={this.toggleCheck.bind(this)} />
     })
     return (
-      <div>
-        <h1 className="header">Todo app</h1>
-        {elements}
+      <div class="todo-container">
+        <h1 className="title">Todo - app</h1>
+        <div className="card-container">
+          {elements}
+        </div>
       </div>
     )
   }

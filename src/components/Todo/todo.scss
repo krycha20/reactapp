@@ -1,0 +1,56 @@
+.todo-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+  .title {
+    color: #000;
+  }
+}
+
+.card-container {
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 9px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.card {
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  h2 {
+    font-size: 1.285rem;
+    font-weight: 400;
+  }
+  &:not(:first-child) {
+    border-top: 1px solid #000;
+  }
+  button {
+    margin-right: 10px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    &.checked {
+      background-color: green;
+    }
+  }
+}
+
+// .card.completed {
+//   opacity: .5;
+// }
+
+.card.completed h2 {
+  text-decoration: line-through;
+}
+
+button {
+  &:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
