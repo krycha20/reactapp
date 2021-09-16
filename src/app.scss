@@ -1,4 +1,4 @@
-@import 'scss/colors';
+@use 'scss/colors' as c;
 
 html {
   font-size: 14px;
@@ -23,10 +23,11 @@ body {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-  color: $black;
+  color: c.$black;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
   /* padding-top: 70px; */
+  background-color: c.$veryLightGray;
 }
 
 header {
@@ -44,4 +45,8 @@ header {
 
 .header {
   text-align: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
 }

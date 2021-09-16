@@ -1,8 +1,9 @@
+@use '../../scss/colors' as c;
+
 .todo-container {
   max-width: 600px;
-  width: 100%;
   margin: 0 auto;
-  padding-top: 40px;
+  padding: 40px 15px 0 15px;
   .title {
     color: #000;
   }
@@ -16,41 +17,53 @@
 }
 
 .card {
-  padding: 5px 15px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  min-height: 60px;
   h2 {
     font-size: 1.285rem;
     font-weight: 400;
   }
   &:not(:first-child) {
-    border-top: 1px solid #000;
+    border-top: 1px solid c.$veryLightGrayishBlue;
   }
-  button {
-    margin-right: 10px;
-    border: 1px solid grey;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    &.checked {
-      background-color: green;
-    }
+  &.completed h2 {
+    text-decoration: line-through;
+    opacity: 0.5;
   }
 }
 
-// .card.completed {
-//   opacity: .5;
-// }
-
-.card.completed h2 {
-  text-decoration: line-through;
+.check-button {
+  margin-right: 10px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  &.checked {
+    background-color: green;
+  }
 }
 
-button {
-  &:disabled {
-    opacity: 0.3;
-    pointer-events: none;
+.remove-button {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 1;
+}
+
+input {
+  width: 100%;
+  margin-right: 10px;
+  min-height: 30px;
+  border: 0;
+  border-bottom: 1px solid c.$veryLightGrayishBlue !important;
+  &:focus-visible {
+    border: 0;
+    outline-style: none;
   }
 }

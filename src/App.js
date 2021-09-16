@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 import './app.scss'
 import Header from './components/header/header'
-import Todo from './components/Todo/todo';
+import Todo from './components/Todo/todo'
+
+
 
 function App() {
   return (

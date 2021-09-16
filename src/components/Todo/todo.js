@@ -30,7 +30,8 @@ class Todo extends React.Component {
         title: 'kiełbaski',
         isCompleted: false
       }
-    ]
+    ],
+    inputValue: ''
   }
 
   toggleCheck(id) {
@@ -41,13 +42,41 @@ class Todo extends React.Component {
     this.setState({ elements: newElements })
   }
 
+  inputHandler(event) {
+    const newValue = event.target.value
+    this.setState({ inputValue: newValue })
+  }
+
+  addItem() {
+    // add to list
+    const item = {
+      id: Math.random(),
+      title: this.state.inputValue
+    }
+    const newElements = [item, ...this.state.elements]
+
+    this.setState({ elements: newElements })
+    this.setState({ inputValue: '' })
+  }
+
+  removeItem(id) {
+    const newList = this.state.elements.filter((item) => item.id !== id)
+    this.setState({ elements: newList })
+  }
+
   render() {
     const elements = this.state.elements.map(e => {
-      return <TodoItem element={e} markClicked={this.toggleCheck.bind(this)} />
+      return <TodoItem element={e} markClicked={this.toggleCheck.bind(this)} removeHandler={this.removeItem.bind(this)} />
     })
     return (
-      <div class="todo-container">
+      <div className="todo-container">
         <h1 className="title">Todo - app</h1>
+        <div className="card-container mb-20">
+          <div className="card">
+            <input type="text" value={this.state.inputValue} onChange={this.inputHandler.bind(this)}/>
+            <button onClick={this.addItem.bind(this)}>Dodaj do listy</button>
+          </div>
+        </div>
         <div className="card-container">
           {elements}
         </div>
