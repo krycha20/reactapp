@@ -1,6 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './todo.scss'
-import TodoItem from './todoItem'
+import TodoItem from './todoItem';
 
 class Todo extends React.Component {
   state = {
@@ -49,14 +50,22 @@ class Todo extends React.Component {
 
   addItem() {
     // add to list
+    let checkInput = false;
+    const error = <div>dbjskal</div>;
     const item = {
       id: Math.random(),
       title: this.state.inputValue
     }
-    const newElements = [item, ...this.state.elements]
 
-    this.setState({ elements: newElements })
-    this.setState({ inputValue: '' })
+    const newElements = [item, ...this.state.elements];
+
+    if(item.title === '') {
+      console.log('nic nie wpisales');
+      checkInput = true;
+    } else {
+      this.setState({ elements: newElements })
+      this.setState({ inputValue: '' })
+    }
   }
 
   removeItem(id) {
@@ -64,17 +73,27 @@ class Todo extends React.Component {
     this.setState({ elements: newList })
   }
 
+  editItem(id) {
+    console.log('duaop');
+    // const newItem = this.state.elements.filter((item) => item.title !== title)
+    // console.log(newItem);
+    // this.setState({ elements: newItem })
+  }
+
   render() {
     const elements = this.state.elements.map(e => {
-      return <TodoItem element={e} markClicked={this.toggleCheck.bind(this)} removeHandler={this.removeItem.bind(this)} />
+      return <TodoItem element={e} markClicked={this.toggleCheck.bind(this)} removeHandler={this.removeItem.bind(this)} editItem={this.editItem.bind(this)} />
     })
+
     return (
       <div className="todo-container">
         <h1 className="title">Todo - app</h1>
         <div className="card-container mb-20">
-          <div className="card">
-            <input type="text" value={this.state.inputValue} onChange={this.inputHandler.bind(this)}/>
-            <button onClick={this.addItem.bind(this)}>Dodaj do listy</button>
+          <div className={`card${this.checkInput ? ' kapusta' : ''}`}>
+            <input type="text" value={this.state.inputValue} placeholder="Enter the name of the task" onChange={this.inputHandler.bind(this)}/>
+            <button className="add-button" onClick={this.addItem.bind(this)}>
+              <FontAwesomeIcon icon="plus-square" />
+            </button>
           </div>
         </div>
         <div className="card-container">

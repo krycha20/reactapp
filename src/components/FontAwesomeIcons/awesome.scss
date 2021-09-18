@@ -1,0 +1,10 @@
+@use '../../scss/colors' as c;
+
+.svg-inline--fa {
+  color: c.$darkGrayishBlue;
+  transition: all 0.2s ease-in-out;
+  min-width: 25px;
+  &:hover {
+    color: c.$brightBlue;
+  }
+}
