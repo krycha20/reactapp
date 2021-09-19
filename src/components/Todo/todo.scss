@@ -17,6 +17,11 @@
   overflow: hidden;
 }
 
+.tasks-list {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .card {
   padding: 0 10px;
   display: flex;
@@ -24,12 +29,10 @@
   min-height: 60px;
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid c.$veryLightGrayishBlue;
   h2 {
     font-size: 1.285rem;
     font-weight: 400;
-  }
-  &:not(:first-child) {
-    border-top: 1px solid c.$veryLightGrayishBlue;
   }
   &.completed h2 {
     text-decoration: line-through;
@@ -133,5 +136,27 @@ input {
   &:focus-visible {
     border: 0;
     outline-style: none;
+  }
+}
+
+.other-actions {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  button {
+    background-color: none;
+    background: none;
+    border: 0;
+    border-radius: 10px;
+    color: c.$veryDarkGrayishBlue;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: c.$brightBlue;
+    }
   }
 }

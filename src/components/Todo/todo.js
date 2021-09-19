@@ -5,7 +5,7 @@ import NewTodoForm from './newTodoForm';
 
 class Todo extends React.Component {
   state = {
-    elements: [
+    tasksList: [
       {
         id: '1',
         title: 'zrobic zakupy',
@@ -15,32 +15,17 @@ class Todo extends React.Component {
         id: '2',
         title: 'frachty',
         isCompleted: false
-      },
-      {
-        id: '3',
-        title: 'kurczaczki',
-        isCompleted: false
-      },
-      {
-        id: '4',
-        title: 'jajuszka',
-        isCompleted: false
-      },
-      {
-        id: '5',
-        title: 'kiełbaski',
-        isCompleted: false
       }
     ],
     inputValue: ''
   }
 
   toggleCheck(id) {
-    const index = this.state.elements.findIndex(x => x.id === id)
-    const newElements = this.state.elements
+    const index = this.state.tasksList.findIndex(x => x.id === id)
+    const newElements = this.state.tasksList
     newElements[index].isCompleted = !newElements[index].isCompleted
 
-    this.setState({ elements: newElements })
+    this.setState({ tasksList: newElements })
   }
 
   updateDraft = event => {
@@ -55,32 +40,41 @@ class Todo extends React.Component {
       title: this.state.inputValue
     }
 
-    const newElements = [item, ...this.state.elements];
+    const newElements = [item, ...this.state.tasksList];
 
     if(item.title === '') {
       checkInput = true;
     } else {
-      this.setState({ elements: newElements })
+      this.setState({ tasksList: newElements })
       this.setState({ inputValue: '' })
     }
   }
 
   removeTodo(id) {
-    const newList = this.state.elements.filter((item) => item.id !== id)
-    this.setState({ elements: newList })
+    const newList = this.state.tasksList.filter((item) => item.id !== id)
+    this.setState({ tasksList: newList })
+  }
+
+  removeAll = () => {
+    console.log('dsadsa', this.state.tasksList);
+    this.setState({tasksList: []});
   }
 
   editTodo() {
   }
 
   render() {
-    const { elements, inputValue } = this.state;
-    const tasks = elements.map(task => {
+    const { tasksList, inputValue } = this.state;
+    const tasks = tasksList.map(task => {
+      console.log('task', task);
       return <TodoItem task={task} markClicked={this.toggleCheck.bind(this)} removeHandler={this.removeTodo.bind(this)} editHandler={this.editTodo.bind(this)} />
     })
 
+    console.log('taksk', tasks)
+
     return (
       <div className="todo-container">
+        {tasks ? 'elo' : 'nie elo'}
         <h1 className="title">Todo - app</h1>
         <div className="card-container mb-20">
           <NewTodoForm 
@@ -89,7 +83,10 @@ class Todo extends React.Component {
             inputValue={inputValue}
             />
         </div>
-        <div className="card-container">
+        <div className="other-actions">
+          <button onClick={this.removeAll}>Remove All</button>
+        </div>
+        <div className="card-container tasks-list">
           {tasks}
         </div>
       </div>

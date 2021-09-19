@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const TodoItem = props => {
   const title = props.task.title;
   const done = props.task.isCompleted;
+  
   return (
     <div className={`card${done ? ' completed' : '' }`} >
       <div className="card-content">

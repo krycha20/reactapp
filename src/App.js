@@ -5,7 +5,6 @@ import Header from './components/Header/header'
 import Todo from './components/Todo/todo';
 
 function App() {
-
   return (
     <div className="app">
       <Header />
