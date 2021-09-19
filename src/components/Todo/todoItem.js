@@ -2,17 +2,19 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const TodoItem = props => {
+  const title = props.task.title;
+  const done = props.task.isCompleted;
   return (
-    <div className={`card${props.element.isCompleted ? ' completed' : '' }`} >
+    <div className={`card${done ? ' completed' : '' }`} >
       <div className="card-content">
-        <span className={`check-button${props.element.isCompleted ? ' checked' : '' }`} onClick={() => props.markClicked(props.element.id)}></span>
-        <h2>{props.element.title}</h2>
+        <span className={`check-button${done ? ' checked' : '' }`} onClick={() => props.markClicked(props.task.id)}></span>
+        <h2>{title}</h2>
       </div>
       <div className="action-buttons">
-        <span className="button edit-button" onClick={() => props.editItem(props.element.id)}>
+        <span className="button edit-button" onClick={() => props.editHandler(props.task.id, title)}>
           <FontAwesomeIcon icon="edit" />
         </span>
-        <span className="button remove-button" onClick={() => props.removeHandler(props.element.id)}>
+        <span className="button remove-button" onClick={() => props.removeHandler(props.task.id)}>
           <FontAwesomeIcon icon="trash-alt" />
         </span>
       </div>
@@ -20,4 +22,4 @@ const TodoItem = props => {
   )
 }
 
-export default TodoItem
+export default TodoItem;
