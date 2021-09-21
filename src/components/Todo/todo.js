@@ -64,10 +64,9 @@ class Todo extends Component {
   }
 
   removeAll = async () => {
-    const { tasks} = this.state;
-    await toDoItemApi.destroy(tasks)
+    const { tasks } = this.state;
     console.log('remove all', tasks);
-    this.setState({ tasks: _.remove(tasks)} );
+    // this.setState({tasks: []});
   }
 
   editTodo() {
