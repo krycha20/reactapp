@@ -46,7 +46,14 @@ class Todo extends Component {
   addTodo = async () => {
     const { tasks, inputValue } = this.state;
     const task = await toDoItemApi.create({ title: inputValue, done: false});
-    this.setState({ tasks: _.append(task, tasks), inputeValue: ''})
+    if(inputValue !== '')
+      this.setState({ tasks: _.append(task, tasks), inputValue: ''});
+  }
+
+  handleKeyDown = (event) => {
+    if(event.keyCode === 13) {
+      this.addTodo();
+    }
   }
 
   findById = (id, arr) => {
@@ -56,7 +63,7 @@ class Todo extends Component {
   }
 
   destroyTodo = async (id) => {
-    const { tasks} = this.state;
+    const { tasks } = this.state;
     await toDoItemApi.destroy(id)
     const { index } = this.findById(id, tasks);
 
@@ -99,10 +106,13 @@ class Todo extends Component {
             onSubmit={this.addTodo}
             onChange={this.updateDraft}
             inputValue={inputValue}
+            onKeyPress={this.handleKeyDown}
             />
         </div>
         {otherOptions}
-        <div className="card-container tasks-list">{taskItem}</div>
+        <div className={`card-container tasks-list${!taskItem.length ? ' noTask' : ''}`}>
+          {taskItem.length ? taskItem : `You don't have tasks`}
+        </div>
       </div>
     )
   }

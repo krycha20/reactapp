@@ -11,17 +11,17 @@ class TodoItem extends Component {
     const done = props.task.done;
   
     return (
-      <div className={`card${done ? ' completed' : '' }`} >
+      <div className={`card${done ? ' completed' : '' }`}>
         <div className="card-content">
           <span className={`check-button${done ? ' checked' : '' }`} onClick={() => props.markClicked(props.task.id)}></span>
           <h2>{title}</h2>
         </div>
         <div className="action-buttons">
-          <span className="button edit-button" 
+          {/* <span className="button edit-button" 
             // onClick={() => props.editHandler(props.task.id, title)}
             >
             <FontAwesomeIcon icon="edit" />
-          </span>
+          </span> */}
           <span className="button remove-button"
             onClick={this.destroy}
             >

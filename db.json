@@ -1,29 +1,19 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Ugotować obiad",
-      "done": false
-    },
-    {
-      "id": 2,
-      "title": "spakowac się na wakacje",
-      "done": false
-    },
-    {
-      "id": 3,
-      "title": "Wysłać Magdę spać",
-      "done": false
-    },
-    {
-      "title": "ewqewq",
+      "title": "nowe zadanie",
       "done": false,
-      "id": 4
+      "id": 1
     },
     {
-      "title": "iuyt",
+      "title": "drugie nowe zadanie",
       "done": false,
-      "id": 5
+      "id": 2
+    },
+    {
+      "title": "trzecie nowe zadanie",
+      "done": false,
+      "id": 3
     }
   ]
 }
